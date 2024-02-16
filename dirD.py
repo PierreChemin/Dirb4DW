@@ -24,19 +24,20 @@ def main():
     clear_file(report)
 
     with open(url2test,"r", encoding='utf-8') as f1:
-        with open(wordlist, "r", encoding='utf-8') as f2:
-            for url in f1:
-                url = url.strip()  
+        for url in f1:
+            url = url.strip()
+            with open(wordlist, "r", encoding='utf-8') as f2:
                 for page in f2:
                     page = page.strip()  
                     fullURL = purgeBack(url + '/' + page)
-                    print(fullURL)
-                    request = session.get(fullURL)
-                    if '200' in str(request) or '301' in str(request):
+                    print(fullURL, "before request")
+                    #request = session.get(fullURL)
+                    command = subprocess.run(['curl', '--socks5-hostname', 'localhost:9150', fullURL]).stdout
+                    print("after request + ", str(command))
+                    return 0
+                    """if '200' in str(request) or '301' in str(request):
                         fullURL += "\n"
-                        with open(report, "a+", encoding='utf-8') as f3:
-                            f3.write(fullURL)  
-
+                        print("ok")"""
     return 0
 
 if __name__ == "__main__":
