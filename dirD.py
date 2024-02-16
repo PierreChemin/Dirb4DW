@@ -31,9 +31,10 @@ def main():
                     page = page.strip()  
                     fullURL = purgeBack(url + '/' + page)
                     print(fullURL, "before request")
-                    #request = session.get(fullURL)
-                    command = subprocess.run(['curl', '--socks5-hostname', 'localhost:9150', fullURL]).stdout
-                    print("after request + ", str(command))
+                    request = session.get(fullURL)
+                    if '200' or '301' or '404' in request :
+                        with open(report, 'a+', encoding='utf-8') as f3:
+                            f3.write(fullURL)
                     return 0
 
     return 0
