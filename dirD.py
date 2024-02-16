@@ -35,10 +35,6 @@ def main():
                     command = subprocess.run(['curl', '--socks5-hostname', 'localhost:9150', fullURL]).stdout
                     print("after request + ", str(command))
                     return 0
-                    """if '200' in str(request) or '301' in str(request):
-                        fullURL += "\n"
-                        with open(report, "a+", encoding='utf-8') as f3:
-                            f3.write(fullURL)  
 
     return 0
 
