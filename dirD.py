@@ -24,9 +24,9 @@ def main():
     clear_file(report)
 
     with open(url2test,"r", encoding='utf-8') as f1:
-        for url in f1:
-            url = url.strip()
-            with open(wordlist, "r", encoding='utf-8') as f2:
+        with open(wordlist, "r", encoding='utf-8') as f2:
+            for url in f1:
+                url = url.strip()  
                 for page in f2:
                     page = page.strip()  
                     fullURL = purgeBack(url + '/' + page)
@@ -37,7 +37,9 @@ def main():
                     return 0
                     """if '200' in str(request) or '301' in str(request):
                         fullURL += "\n"
-                        print("ok")"""
+                        with open(report, "a+", encoding='utf-8') as f3:
+                            f3.write(fullURL)  
+
     return 0
 
 if __name__ == "__main__":
