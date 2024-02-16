@@ -32,11 +32,12 @@ def main():
                     fullURL = purgeBack(url + '/' + page)
                     print(fullURL)
                     #faire un try ici pour pas que ça s'arrête
-                    """request = session.get(fullURL)
+                    request = session.get(fullURL)
+                    print(request)
                     if '200' or '301' or '404' in request :
                         with open(report, 'a+', encoding='utf-8') as f3:
+                            fullURL = fullURL + '\n'
                             f3.write(fullURL)
-                    return 0"""
 
     return 0
 
