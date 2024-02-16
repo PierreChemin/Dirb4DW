@@ -24,18 +24,19 @@ def main():
     clear_file(report)
 
     with open(url2test,"r", encoding='utf-8') as f1:
-        with open(wordlist, "r", encoding='utf-8') as f2:
-            for url in f1:
-                url = url.strip()  
+        for url in f1:
+            url = url.strip() 
+            with open(wordlist, "r", encoding='utf-8') as f2: 
                 for page in f2:
                     page = page.strip()  
                     fullURL = purgeBack(url + '/' + page)
-                    print(fullURL, "before request")
-                    request = session.get(fullURL)
+                    print(fullURL)
+                    #faire un try ici pour pas que ça s'arrête
+                    """request = session.get(fullURL)
                     if '200' or '301' or '404' in request :
                         with open(report, 'a+', encoding='utf-8') as f3:
                             f3.write(fullURL)
-                    return 0
+                    return 0"""
 
     return 0
 
