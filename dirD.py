@@ -20,7 +20,7 @@ def main():
     #Récupération de la wordlist, des urls et de l'output
     wordlist = "wordlists/small.txt"
     url2test = "wordlists/url2test.txt"
-    report = "report/report.txt"
+    report = "/Users/pierrechemin/Desktop/Cyllene/darkScan/reports/reportDark.txt"
     clear_file(report)
 
     print("-------------- commencement du dirD --------------")
@@ -31,11 +31,8 @@ def main():
                 for page in f2:
                     page = page.strip()  
                     fullURL = purgeBack(url + '/' + page)
-                    print(fullURL)
-                    #faire un try ici pour pas que ça s'arrête
                     request = session.get(fullURL)
-                    print(request)
-                    if '200' or '301' or '404' in request :
+                    if ('200' in str(request) or '301' in str(request)) :
                         with open(report, 'a+', encoding='utf-8') as f3:
                             fullURL = fullURL + '\n'
                             f3.write(fullURL)
