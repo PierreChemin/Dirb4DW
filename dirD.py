@@ -23,6 +23,7 @@ def main():
     report = "report/report.txt"
     clear_file(report)
 
+    print("-------------- commencement du dirD --------------")
     with open(url2test,"r", encoding='utf-8') as f1:
         for url in f1:
             url = url.strip() 
@@ -39,6 +40,7 @@ def main():
                             fullURL = fullURL + '\n'
                             f3.write(fullURL)
 
+    print("-------------- fin du dirD --------------")
     return 0
 
 if __name__ == "__main__":
