@@ -19,8 +19,8 @@ def main():
     session = connect2Tor()
     #Récupération de la wordlist, des urls et de l'output
     wordlist = "wordlists/small.txt"
-    url2test = "wordlists/url2test.txt"
-    report = "/Users/pierrechemin/Desktop/Cyllene/darkScan/reports/reportDark.txt"
+    url2test = "/Users/pierrechemin/Desktop/Cyllene/darkScan/wordlists/sitesUtilisables.txt"
+    report = "/Users/pierrechemin/Desktop/Cyllene/darkScan/wordlists/urlUtilisables.txt"
     clear_file(report)
 
     print("-------------- commencement du dirD --------------")
@@ -32,6 +32,7 @@ def main():
                     page = page.strip()  
                     fullURL = purgeBack(url + '/' + page)
                     request = session.get(fullURL)
+                    print("url = ", fullURL, " answer = ", request)
                     if ('200' in str(request) or '301' in str(request)) :
                         with open(report, 'a+', encoding='utf-8') as f3:
                             fullURL = fullURL + '\n'
